@@ -1,0 +1,14 @@
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/Solver.GeneratedMSBuildEditorConfig.editorconfig
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/Solver.AssemblyInfoInputs.cache
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/Solver.AssemblyInfo.cs
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/Solver.csproj.CoreCompileInputs.cache
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/bin/Debug/net8.0/Solver
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/bin/Debug/net8.0/Solver.deps.json
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/bin/Debug/net8.0/Solver.runtimeconfig.json
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/bin/Debug/net8.0/Solver.dll
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/bin/Debug/net8.0/Solver.pdb
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/Solver.dll
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/refint/Solver.dll
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/Solver.pdb
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/Solver.genruntimeconfig.cache
+/Users/michaelcuellar/Projects/Rummikub Solver/Solver/obj/Debug/net8.0/ref/Solver.dll
