@@ -20,22 +20,29 @@ public class TileSet
   }
 
   private bool IsValidStraightSet() {
-    // change to recfelct tile set size
-    if (Tiles.Count < 2) {
+    if (Tiles.Count < 3) {
       return false;
     }
     if (Tiles.Select(tile => tile.Color).ToHashSet().Count > 1) {
       return false;
     }
-    if (Tiles.Select(tile => tile.Number).ToHashSet().Count < Tiles.Count) {
+    HashSet<int> tileNums = Tiles.Select(tile => tile.Number).ToHashSet();
+    if (tileNums.Count < Tiles.Count) {
       return false;
+    }
+    if (tileNums.Max() - tileNums.Min() != tileNums.Count-1) {
+      return false;
+    }
+    for (var i = 1; i < Tiles.Count; i++) {
+      if (Tiles[i].Number != Tiles[i-1].Number+1) {
+        return false;
+      }
     }
     return true;
   }
 
   private bool IsValidSingleNumSet() {
-    // change to recfelct tile set size
-    if (Tiles.Count > 4 || Tiles.Count < 2) {
+    if (Tiles.Count > 4 || Tiles.Count < 3) {
       return false;
     }
     if (Tiles.Select(tile => tile.Color).ToHashSet().Count < Tiles.Count) {
@@ -52,11 +59,16 @@ public class TileSet
     // return Tiles.All(tiles => Tiles.Count > 2);
   }
 
-  // public TileSet(int size, List<Tile> tiles)
-  // {
-  //   // Type = type;
-  //   // Size = size;
-  //   Tiles = tiles;
-  // }
+  public void AddTile(Tile tile) {
+    Tiles.Add(tile);
+  }
+
+// assumes input sets are sorted by number
+  public bool Equals(TileSet set) {
+    if (Tiles.Count != set.Tiles.Count) { return false; }
+    List<Tile> nonMatchingTiles = Tiles.Where((tile, index) => tile.Equals(set.Tiles[index])).ToList();
+    if (nonMatchingTiles.Count < Tiles.Count) { return false;}
+    return true;
+  }
 
 }

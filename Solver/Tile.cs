@@ -9,4 +9,8 @@ public class Tile
     Color = color;
     Number = number;
   }
+
+  public bool Equals(Tile tile) {
+    return (Color == tile.Color && Number == tile.Number);
+  }
 }
