@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/michaelcuellar/Projects/Rummikub-Solver/Solver/Solver.csproj": {}
+    "/Users/michaelcuellar/Projects/Rummikub-Solver/Backend/Solver/Solver.csproj": {}
   },
   "projects": {
-    "/Users/michaelcuellar/Projects/Rummikub-Solver/Solver/Solver.csproj": {
+    "/Users/michaelcuellar/Projects/Rummikub-Solver/Backend/Solver/Solver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/michaelcuellar/Projects/Rummikub-Solver/Solver/Solver.csproj",
+        "projectUniqueName": "/Users/michaelcuellar/Projects/Rummikub-Solver/Backend/Solver/Solver.csproj",
         "projectName": "Solver",
-        "projectPath": "/Users/michaelcuellar/Projects/Rummikub-Solver/Solver/Solver.csproj",
+        "projectPath": "/Users/michaelcuellar/Projects/Rummikub-Solver/Backend/Solver/Solver.csproj",
         "packagesPath": "/Users/michaelcuellar/.nuget/packages/",
-        "outputPath": "/Users/michaelcuellar/Projects/Rummikub-Solver/Solver/obj/",
+        "outputPath": "/Users/michaelcuellar/Projects/Rummikub-Solver/Backend/Solver/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/michaelcuellar/.nuget/NuGet/NuGet.Config"
