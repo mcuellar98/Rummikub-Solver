@@ -2,6 +2,8 @@
 using System.Security.Cryptography.X509Certificates;
 using Solver;
 
+
+
 Tile tile1 = new Tile("blue", 1);
 Tile tile2 = new Tile("blue", 2);
 Tile tile3 = new Tile("blue", 3);
@@ -17,7 +19,7 @@ TileSet tileSet1 = new TileSet(
   [tile1, tile2, tile3]
 );
 TileSet tileSet2 = new TileSet(
- [  /*tile4, tile5, tile6,*/ tile7, tile8, tile9 ]
+ [  tile4, tile5, tile6, tile7, tile8, tile9 ]
 );
 
 List<TileSet> tileSets = new List<TileSet> {tileSet1, tileSet2};
@@ -34,9 +36,5 @@ foreach (List<TileSet> b in validBoards) {
   }
   Console.WriteLine(tileString);
 }
-
-Console.WriteLine(validBoards.Count);
-
-
 
 
