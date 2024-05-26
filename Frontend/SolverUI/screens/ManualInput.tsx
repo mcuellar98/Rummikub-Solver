@@ -6,8 +6,7 @@ import { useRef, useState } from "react";
 export default function Input() {
 
   // const selectedTiles = useRef<[number, string[]>([]);
-  const colors = ['blue', 'red', 'black', '#e67e00'];
-  const tileGrid = colors.map((color) => <TileRow color={color} />);
+  const colors = ['blue', 'blue', 'red','red', 'black','black', '#e67e00', '#e67e00'];
 
   return (
     <View
@@ -15,8 +14,7 @@ export default function Input() {
         flex: 1,
         alignItems: "center",
       }}>
-        {tileGrid};
-
+      {colors.map((color) => <TileRow color={color}/>)}
       <Button title="Submit"></Button>
     </View>
   );

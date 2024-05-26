@@ -1,15 +1,23 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import type { PropsWithChildren, ReactElement } from 'react';
-import { useRouter } from "expo-router";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+
+type RootStackParamList = {
+  ManualInput: undefined;
+};
 
 type Props = PropsWithChildren<{
-  text: string
+  text: string,
 }>;
 
 export default function CustomButton({text}: Props) {
-  const router = useRouter();
+
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
-    <TouchableOpacity style={styles.button} onPress={() => {router.navigate('input')}}>
+    <TouchableOpacity style={styles.button} onPress={() => {navigation.push('ManualInput')}}>
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   );

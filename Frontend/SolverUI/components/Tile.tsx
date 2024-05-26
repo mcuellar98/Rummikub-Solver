@@ -4,14 +4,11 @@ import { MutableRefObject, PropsWithChildren, useState } from 'react';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-
 type Props = PropsWithChildren<{
   number: number,
   color: string,
   // selectedTiles: MutableRefObject<[number, string][]>;
 }>;
-
-
 
 export default function InputTypeButton({number, color}: Props) {
 
