@@ -7,14 +7,14 @@ const screenHeight = Dimensions.get('window').height;
 
 type Props = PropsWithChildren<{
   color: string,
-  // selectedTiles: MutableRefObject<[number, string][]>;
+  selectedTiles: MutableRefObject<[number, string][]>;
 }>;
 
-export default function InputTypeButton({color}: Props) {
+export default function InputTypeButton({color, selectedTiles}: Props) {
 
   const tileRow = [];
   for (var i = 1; i < 14; i++) {
-    tileRow.push(<Tile number={i} color={color} key={i} />);
+    tileRow.push(<Tile number={i} color={color} key={i} selectedTiles={selectedTiles} />);
   }
   return (
     <View style={styles.rowContainer}>

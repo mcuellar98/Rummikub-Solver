@@ -3,10 +3,15 @@ import TileRow from '../components/TileRow';
 import CustomButton from "@/components/CustomButton";
 import { useRef, useState } from "react";
 
+const colors = ['blue', 'blue', 'red','red', 'black','black', '#e67e00', '#e67e00'];
+
 export default function Input() {
 
-  // const selectedTiles = useRef<[number, string[]>([]);
-  const colors = ['blue', 'blue', 'red','red', 'black','black', '#e67e00', '#e67e00'];
+  const selectedTiles = useRef([]);
+
+  const handlePress = () => {
+    console.log(selectedTiles.current);
+  };
 
   return (
     <View
@@ -14,8 +19,8 @@ export default function Input() {
         flex: 1,
         alignItems: "center",
       }}>
-      {colors.map((color) => <TileRow color={color}/>)}
-      <Button title="Submit"></Button>
+      {colors.map((color) => <TileRow color={color} selectedTiles={selectedTiles}/>)}
+      <Button title="Submit" onPress={handlePress}></Button>
     </View>
   );
 }
