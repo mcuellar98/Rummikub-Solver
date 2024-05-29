@@ -8,7 +8,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddLogging();
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,36 +19,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapPost("/test", (Tile tile, ILogger<Program> logger) => {
-
-    logger.LogInformation(tile.Number.ToString());
+app.MapPost("/test", (List<Tile> tiles, ILogger<Program> logger) => {
+    logger.LogInformation(tiles[0].Number.ToString());
+    logger.LogInformation(tiles[1].Number.ToString());
+    logger.LogInformation((tiles.Count).ToString());
 })
-.WithName("CreateWeatherForecast")
+.WithName("SolveBoard")
 .WithOpenApi();
 
-// app.MapGet("/weatherforecast", () =>
-// {
-//     var forecast =  Enumerable.Range(1, 5).Select(index =>
-//         new WeatherForecast
-//         (
-//             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-//             Random.Shared.Next(-20, 55),
-//             summaries[Random.Shared.Next(summaries.Length)]
-//         ))
-//         .ToArray();
-//     return forecast;
-// })
-// .WithName("GetWeatherForecast")
-// .WithOpenApi();
-
 app.Run();
-
-record Tiles(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
