@@ -19,7 +19,7 @@ export default function Input() {
         flex: 1,
         alignItems: "center",
       }}>
-      {colors.map((color) => <TileRow color={color} selectedTiles={selectedTiles}/>)}
+      {colors.map((color,index) => <TileRow color={color} selectedTiles={selectedTiles} row={index}/>)}
       <Button title="Submit" onPress={handlePress}></Button>
     </View>
   );

@@ -10,7 +10,7 @@ type Props = PropsWithChildren<{
   selectedTiles: MutableRefObject<[number, string][]>;
 }>;
 
-export default function InputTypeButton({number, color, selectedTiles}: Props) {
+export default function Tile({number, color, selectedTiles}: Props) {
 
   const [borderColor, setBorderColor] = useState('grey');
   const [boarderWidth, setBorderWidth] = useState(1);
