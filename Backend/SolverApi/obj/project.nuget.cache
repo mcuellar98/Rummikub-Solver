@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5dJC9bGpzIkUh7ZULLv/aH/9XXn2tebAaKXkPJHrlnyjjFT6WEbj1NXE+ylYpbfsyLdCRl4ndx9bbf5RjC3teQ==",
+  "dgSpecHash": "dJaoYDFaXvVt6NaV+zROg+dbqRk6HKalgUj7YKUnhENrtDtairqL2+O6e+nhPmjYcfvTQQCgI9BHbh5vOITsOw==",
   "success": true,
   "projectFilePath": "/Users/michaelcuellar/Projects/Rummikub-Solver/Backend/SolverApi/SolverApi.csproj",
   "expectedPackageFiles": [

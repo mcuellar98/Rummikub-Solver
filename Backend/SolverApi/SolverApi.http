@@ -3,4 +3,7 @@
 GET {{SolverApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
+POST {{SolverApi_HostAddress}}/test/
+Accept: application/json
+
 ###
