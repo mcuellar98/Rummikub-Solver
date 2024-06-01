@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SolverApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73ecf4afb4995cc825dc12c1872a3e12511fcf9c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8c86fd6c90607986c104c6ea359e114349ad50c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SolverApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SolverApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

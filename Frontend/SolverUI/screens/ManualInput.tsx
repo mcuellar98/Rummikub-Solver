@@ -1,7 +1,7 @@
 import { Button, Text, View } from "react-native";
 import TileRow from '../components/TileRow';
-import CustomButton from "@/components/CustomButton";
 import { useRef, useState } from "react";
+import axios from 'axios';
 
 const colors = ['blue', 'blue', 'red','red', 'black','black', '#e67e00', '#e67e00'];
 
@@ -10,7 +10,14 @@ export default function Input() {
   const selectedTiles = useRef([]);
 
   const handlePress = () => {
-    console.log(selectedTiles.current);
+    axios.post('http://localhost:5044/test',selectedTiles.current)
+    .then((response) => {
+      // console.log(response.data)
+      // response.data.forEach((board) => {
+      //   console.log(board);
+      // })
+    })
+    .catch((err) => console.log(err))
   };
 
   return (

@@ -20,9 +20,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapPost("/test", (List<Tile> tiles, ILogger<Program> logger) => {
-    logger.LogInformation(tiles[0].Number.ToString());
-    logger.LogInformation(tiles[1].Number.ToString());
-    logger.LogInformation((tiles.Count).ToString());
+    Board board = new Board(tiles);
+    board.GenerateValidBoards();
+    List<List<TileSet>> result = (board.ValidBoards);
+    return Results.Ok(result);
 })
 .WithName("SolveBoard")
 .WithOpenApi();

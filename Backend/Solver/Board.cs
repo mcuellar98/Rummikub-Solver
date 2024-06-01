@@ -12,34 +12,45 @@ public class Board
   public List<TileSet> BoardTileSets { get; set; }
   public TileSet? HandTiles { get; set; }
   public List<Tile> AllTiles {get; set; }
-  private List<List<TileSet>> ValidBoards {get; set;}
+  public List<List<TileSet>> ValidBoards {get; set;}
   private List<string> ValidBoardTracker {get; set;}
 
-  public Board(List<TileSet> boardSets, TileSet handTiles)
-  {
-    BoardTileSets = boardSets;
-    HandTiles = handTiles;
-    AllTiles = GetAllTiles();
+  // public Board(List<TileSet> boardSets, TileSet handTiles)
+  // {
+  //   BoardTileSets = boardSets;
+  //   HandTiles = handTiles;
+  //   AllTiles = GetAllTiles();
+  //   ValidBoards = [];
+  //   ValidBoardTracker = [];
+  // }
+
+  // public Board(List<TileSet> boardSets)
+  // {
+  //   BoardTileSets = boardSets;
+  //   AllTiles = GetAllTiles();
+  //   ValidBoards = [];
+  //   ValidBoardTracker = [];
+  // }
+
+  public Board(List<Tile> tiles) {
+    AllTiles = tiles;
     ValidBoards = [];
     ValidBoardTracker = [];
   }
 
-  public Board(List<TileSet> boardSets)
-  {
-    BoardTileSets = boardSets;
-    AllTiles = GetAllTiles();
-    ValidBoards = [];
-    ValidBoardTracker = [];
-  }
+
 
   public string GetCurrentSetsAsString() {
     string allSetsAsString = "";
     foreach(TileSet set in BoardTileSets)
     {
       allSetsAsString += set.Tiles.Aggregate("", (acc, x) => acc + x.Number.ToString()) + "\n";
-
     };
     return allSetsAsString;
+  }
+
+  public string GetAllTilesAsString() {
+    return AllTiles.Aggregate("", (acc, x) => acc + x.Number.ToString());
   }
 
   private List<T> CopyListMinusIndex<T>(List<T> list, int indexToSkip) {
@@ -73,30 +84,32 @@ public class Board
   }
 
   private void GenerateValidBoardsRecursion(List<Tile> tiles, List<TileSet> currentBoard, TileSet currentSet, int index) {
-    if (currentSet.Tiles.Count > 2 && !currentSet.IsValidSet()) { return; }
-    if (tiles.Count == 1) {
-      currentSet.AddTile(tiles[index]);
-      if (currentSet.IsValidSet()) {
-          currentBoard.Add(currentSet);
-          string trackerString = getTrackerString(currentBoard);
-          if (!IsAlreadyInValidBoards(trackerString)) {
-            ValidBoards.Add(currentBoard);
-            ValidBoardTracker.Add(trackerString);
-          }
+    if (ValidBoards.Count() < 10) {
+      if (currentSet.Tiles.Count > 2 && !currentSet.IsValidSet()) { return; }
+      if (tiles.Count == 1) {
+        currentSet.AddTile(tiles[index]);
+        if (currentSet.IsValidSet()) {
+            currentBoard.Add(currentSet);
+            string trackerString = getTrackerString(currentBoard);
+            if (!IsAlreadyInValidBoards(trackerString)) {
+              ValidBoards.Add(currentBoard);
+              ValidBoardTracker.Add(trackerString);
+            }
+        }
+        return;
       }
-      return;
-    }
-    List<TileSet> currentBoardCopy1 = new([.. currentBoard]);
-    List<TileSet> currentBoardCopy2 = new([.. currentBoard]);
-    TileSet currentSetCopy1 = new([.. currentSet.Tiles]);
-    currentSetCopy1.AddTile(tiles[index]);
-    List<Tile> newTiles = CopyListMinusIndex(tiles, index);
-    for (int i = 0; i < newTiles.Count; i++) {
-      GenerateValidBoardsRecursion(newTiles, currentBoardCopy1, currentSetCopy1, i);
-      currentBoardCopy2.Add(currentSetCopy1);
-      if (currentSet.Tiles.Count > 1 && currentSetCopy1.IsValidSet()) {
-        GenerateValidBoardsRecursion(newTiles, currentBoardCopy2, new TileSet(), i);
-        currentBoardCopy2 = new([.. currentBoard]);
+      List<TileSet> currentBoardCopy1 = new([.. currentBoard]);
+      List<TileSet> currentBoardCopy2 = new([.. currentBoard]);
+      TileSet currentSetCopy1 = new([.. currentSet.Tiles]);
+      currentSetCopy1.AddTile(tiles[index]);
+      List<Tile> newTiles = CopyListMinusIndex(tiles, index);
+      for (int i = 0; i < newTiles.Count; i++) {
+        GenerateValidBoardsRecursion(newTiles, currentBoardCopy1, currentSetCopy1, i);
+        currentBoardCopy2.Add(currentSetCopy1);
+        if (currentSet.Tiles.Count > 1 && currentSetCopy1.IsValidSet()) {
+          GenerateValidBoardsRecursion(newTiles, currentBoardCopy2, new TileSet(), i);
+          currentBoardCopy2 = new([.. currentBoard]);
+        }
       }
     }
   }
