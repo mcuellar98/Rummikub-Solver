@@ -84,7 +84,7 @@ public class Board
   }
 
   private void GenerateValidBoardsRecursion(List<Tile> tiles, List<TileSet> currentBoard, TileSet currentSet, int index) {
-    if (ValidBoards.Count() < 10) {
+    if (ValidBoards.Count() < 1) {
       if (currentSet.Tiles.Count > 2 && !currentSet.IsValidSet()) { return; }
       if (tiles.Count == 1) {
         currentSet.AddTile(tiles[index]);
