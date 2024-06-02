@@ -9,28 +9,10 @@ namespace Solver;
 
 public class Board
 {
-  public List<TileSet> BoardTileSets { get; set; }
-  public TileSet? HandTiles { get; set; }
   public List<Tile> AllTiles {get; set; }
   public List<List<TileSet>> ValidBoards {get; set;}
   private List<string> ValidBoardTracker {get; set;}
 
-  // public Board(List<TileSet> boardSets, TileSet handTiles)
-  // {
-  //   BoardTileSets = boardSets;
-  //   HandTiles = handTiles;
-  //   AllTiles = GetAllTiles();
-  //   ValidBoards = [];
-  //   ValidBoardTracker = [];
-  // }
-
-  // public Board(List<TileSet> boardSets)
-  // {
-  //   BoardTileSets = boardSets;
-  //   AllTiles = GetAllTiles();
-  //   ValidBoards = [];
-  //   ValidBoardTracker = [];
-  // }
 
   public Board(List<Tile> tiles) {
     AllTiles = tiles;
@@ -38,33 +20,8 @@ public class Board
     ValidBoardTracker = [];
   }
 
-
-
-  public string GetCurrentSetsAsString() {
-    string allSetsAsString = "";
-    foreach(TileSet set in BoardTileSets)
-    {
-      allSetsAsString += set.Tiles.Aggregate("", (acc, x) => acc + x.Number.ToString()) + "\n";
-    };
-    return allSetsAsString;
-  }
-
-  public string GetAllTilesAsString() {
-    return AllTiles.Aggregate("", (acc, x) => acc + x.Number.ToString());
-  }
-
   private List<T> CopyListMinusIndex<T>(List<T> list, int indexToSkip) {
     return list.Where((val, index) => index != indexToSkip).ToList();
-  }
-
-  private List<Tile> GetAllTiles() {
-    List<Tile> allTiles = [];
-    if (HandTiles != null) {
-      allTiles = [.. HandTiles.Tiles, .. BoardTileSets.SelectMany(set => set.Tiles).ToList()];
-    } else {
-      allTiles = BoardTileSets.SelectMany(set => set.Tiles).ToList();
-    }
-    return allTiles;
   }
 
   private bool IsAlreadyInValidBoards(string trackerString) {
