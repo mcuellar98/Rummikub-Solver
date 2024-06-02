@@ -7,7 +7,7 @@ const screenHeight = Dimensions.get('window').height;
 type Props = PropsWithChildren<{
   number: number,
   color: string,
-  selectedTiles: MutableRefObject<[number, string][]>;
+  selectedTiles: MutableRefObject<{number: number, color: string}[]>;
 }>;
 
 export default function Tile({number, color, selectedTiles}: Props) {
@@ -21,7 +21,7 @@ export default function Tile({number, color, selectedTiles}: Props) {
       tileIsSelected.current = true;
       setBorderColor('green');
       setBorderWidth(3);
-      selectedTiles.current.push([number, color])
+      selectedTiles.current.push({color:color, number: number})
     } else {
       tileIsSelected.current = false;
       setBorderColor('grey');
@@ -33,7 +33,7 @@ export default function Tile({number, color, selectedTiles}: Props) {
   const removeTile = () => {
     for (var i = 0; i < selectedTiles.current.length; i++) {
       var tile = selectedTiles.current[i];
-      if (tile[0] === number && tile[1] === color) {
+      if (tile.number === number && tile.color === color) {
         selectedTiles.current = selectedTiles.current.filter((tile, index) => index !==i);
         break;
       }

@@ -32,3 +32,5 @@
 /Users/michaelcuellar/Projects/Rummikub-Solver/Backend/SolverApi/obj/Debug/net8.0/SolverApi.pdb
 /Users/michaelcuellar/Projects/Rummikub-Solver/Backend/SolverApi/obj/Debug/net8.0/SolverApi.genruntimeconfig.cache
 /Users/michaelcuellar/Projects/Rummikub-Solver/Backend/SolverApi/obj/Debug/net8.0/ref/SolverApi.dll
+/Users/michaelcuellar/Projects/Rummikub-Solver/Backend/SolverApi/bin/Debug/net8.0/Solver.dll
+/Users/michaelcuellar/Projects/Rummikub-Solver/Backend/SolverApi/bin/Debug/net8.0/Solver.pdb
