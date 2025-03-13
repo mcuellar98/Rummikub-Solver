@@ -12,12 +12,14 @@ public class Board
   public List<Tile> AllTiles {get; set; }
   public List<List<TileSet>> ValidBoards {get; set;}
   private List<string> ValidBoardTracker {get; set;}
-
+  private Dictionary<int, string[]> AvailableColorsByNumbers {get; set;}
+  private Dictionary<string, int[]> AvailableNumbersByColors {get; set;}
 
   public Board(List<Tile> tiles) {
     AllTiles = tiles;
     ValidBoards = [];
     ValidBoardTracker = [];
+    //AvailableColorsByNumbers = AllTiles.GroupBy(x => x.Number).toDictionary(x => x.Number, x => [] ?? )
   }
 
   private List<T> CopyListMinusIndex<T>(List<T> list, int indexToSkip) {
@@ -40,7 +42,7 @@ public class Board
     return trackerString;
   }
 
-  private void GenerateValidBoardsRecursion(List<Tile> tiles, List<TileSet> currentBoard, TileSet currentSet, int index) {
+  private void RecursivelyGenerateValidBoards(List<Tile> tiles, List<TileSet> currentBoard, TileSet currentSet, int index) {
     if (ValidBoards.Count() < 1) {
       if (currentSet.Tiles.Count > 2 && !currentSet.IsValidSet()) { return; }
       if (tiles.Count == 1) {
@@ -61,10 +63,10 @@ public class Board
       currentSetCopy1.AddTile(tiles[index]);
       List<Tile> newTiles = CopyListMinusIndex(tiles, index);
       for (int i = 0; i < newTiles.Count; i++) {
-        GenerateValidBoardsRecursion(newTiles, currentBoardCopy1, currentSetCopy1, i);
+        RecursivelyGenerateValidBoards(newTiles, currentBoardCopy1, currentSetCopy1, i);
         currentBoardCopy2.Add(currentSetCopy1);
         if (currentSet.Tiles.Count > 1 && currentSetCopy1.IsValidSet()) {
-          GenerateValidBoardsRecursion(newTiles, currentBoardCopy2, new TileSet(), i);
+          RecursivelyGenerateValidBoards(newTiles, currentBoardCopy2, new TileSet(), i);
           currentBoardCopy2 = new([.. currentBoard]);
         }
       }
@@ -74,12 +76,12 @@ public class Board
   public List<List<TileSet>> GenerateValidBoards() {
     List<TileSet> currentBoard = [];
     for (var i = 0; i < AllTiles.Count; i++) {
-      GenerateValidBoardsRecursion(AllTiles, currentBoard, new TileSet(), i);
+      RecursivelyGenerateValidBoards(AllTiles, currentBoard, new TileSet(), i);
     }
     return ValidBoards;
   }
 
-  public bool IsBoardValid () {
-    return BoardTileSets.All(set => set.IsValidSet());
-  }
+  // public bool IsBoardValid () {
+  //   return BoardTileSets.All(set => set.IsValidSet());
+  // }
 }
